@@ -44,6 +44,17 @@ const shopping_list = ref([
     { id: 40, name: '椰子水', price: '18', quantity: 8 },
 ])
 
+function click(product)
+{
+    console.log(product)
+    shopping_list.value = shopping_list.value.filter(item => item != product)
+}
+
+function clear_all()
+{
+    shopping_list.value = []
+}
+
 </script>
 
 <template>
@@ -55,7 +66,7 @@ const shopping_list = ref([
             <div class="text_num">数量 </div>
             <div class="text_num">总价 </div>
             <div class="del_container">
-                <img class="title_del_btn" src="@/assets/actions/delete.png" />
+                <img class="title_del_btn" :key='0' @click="clear_all" src="@/assets/actions/delete.png" />
             </div>
         </div>
 
@@ -66,7 +77,7 @@ const shopping_list = ref([
                 <div class="text_num">{{ product.quantity }}</div>
                 <div class="text_num">{{ product.price * product.quantity }}</div>
                 <div class="del_container">
-                    <img class="item_del_btn" src="@/assets/actions/delete.png" />
+                    <img class="item_del_btn" :key="product.id" @click="click(product)"  src="@/assets/actions/delete.png" />
                 </div>
             </div>
         </div>
