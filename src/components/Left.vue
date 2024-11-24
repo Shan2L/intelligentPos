@@ -2,13 +2,26 @@
 import Status from './Status.vue'
 import { ref } from 'vue'
 const product_list = ref([
-    { id: '6901028090544', name: "盛京", price: 20 },
-    { id: '6901028180801', name: "黄鹤楼", price: 16 },
-    { id: '6922602231061', name: "蛋卷", price: 49 },
+    { id: '6901028090544', name: "盛京", category:"香烟", price: 20, unit: '盒', size: '160mm*90mm*15mm', weight: '0.5 kg', number: 100, checkin_date:"2020-10-4", made_date:"2020-9-9", secure_date:"10 days"},
+    { id: '6901028180801', name: "黄鹤楼", category:"香烟", price: 26, unit: '盒', size: '160mm*90mm*15mm', weight: '0.5 kg', number: 100, checkin_date:"2020-10-4", made_date:"2020-9-9", secure_date:"10 days"},
+    { id: '6922602231061', name: "蛋卷", category:"食品", price: 20, unit: '盒', size: '160mm*90mm*15mm', weight: '2 kg', number: 100, checkin_date:"2020-10-4", made_date:"2020-9-9", secure_date:"10 days"},
+    { id: '6955887980102', name: "川崎火锅底料", category:"食品", price: 5, unit: '碗', size: '160mm*90mm*15mm', weight: '0.1 kg', number: 100, checkin_date:"2020-10-4", made_date:"2020-9-9", secure_date:"10 days"},
+    { id: '9787511379399', name: "反本能", category:"书籍", price: 100, unit: '盒', size: '160mm*90mm*15mm', weight: '1 kg', number: 100, checkin_date:"2020-10-4", made_date:"2020-9-9", secure_date:"10 days"},
+
 ])
 
 const search_series_id = ref("");
-const search_result = ref({ id: "", name: "", price: 0 });
+const search_result = ref({ id: 'xxxxxxxxxxxxxxx', 
+                            name: "xxx", 
+                            category:"xx", 
+                            price: "xx", 
+                            unit: 'x', 
+                            size: 'xxxx', 
+                            weight: 'x kg', 
+                            number: 'xxx', 
+                            checkin_date:"xxxx-xx-xx", 
+                            made_date:"xxxx-xx-xx", 
+                            secure_date:"xx days"});
 
 function query_product_info() {
     console.log(search_series_id.value)
@@ -43,21 +56,21 @@ function query_product_info() {
 
             <div class="info-item">
                 <div class="text">类别:&nbsp;</div>
-                <div class="text">香烟</div>
+                <div class="text">{{search_result.category}}</div>
             </div>
 
             <div class="info-item">
                 <div class="text">规格:&nbsp;</div>
-                <div class="text">170mm*100mm*20mm</div>
+                <div class="text">{{search_result.category}}</div>
             </div>
 
             <div class="info-item">
                 <div class="text">重量:&nbsp;</div>
-                <div class="text">0.1kg</div>
+                <div class="text">{{search_result.weight}}</div>
             </div>
             <div class="info-item">
                 <div class="text">库存数量:&nbsp;</div>
-                <div class="text">10</div>
+                <div class="text">{{search_result.number }}</div>
             </div>
             <div class="info-item">
                 <div class="text">单价(盒):&nbsp;</div>
@@ -65,15 +78,15 @@ function query_product_info() {
             </div>
             <div class="info-item">
                 <div class="text">入库日期:&nbsp;</div>
-                <div class="text">2024-10-13</div>
+                <div class="text">{{search_result.checkin_date}}</div>
             </div>
             <div class="info-item">
                 <div class="text">生产日期:&nbsp;</div>
-                <div class="text">2023-10-10</div>
+                <div class="text">{{ search_result.made_date }}</div>
             </div>
             <div class="info-item">
                 <div class="text">保质期:&nbsp;</div>
-                <div class="text">10天</div>
+                <div class="text">{{ search_result.secure_date }}</div>
             </div>
             <div class="info-item">
                 <div class="text">过期日期:&nbsp;</div>
